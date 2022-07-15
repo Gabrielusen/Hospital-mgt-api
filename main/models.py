@@ -29,7 +29,6 @@ class Staff(models.Model):
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
     staff_profile_pic = models.ImageField(upload_to='profile_pic/')
 
-    def 
 
 
  
