@@ -1,3 +1,4 @@
+from distutils.command.upload import upload
 from pickle import FALSE
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
@@ -26,7 +27,9 @@ class Staff(models.Model):
     staff_gender = models.CharField(max_length=20, choices=gender, default='M')
     staff_birthday = models.DateField(default=None, null=False)
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
-    staff_profile_pic = models.ImageField()
+    staff_profile_pic = models.ImageField(upload_to='profile_pic/')
+
+    def 
 
 
  
