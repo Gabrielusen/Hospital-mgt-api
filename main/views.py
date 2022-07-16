@@ -1,8 +1,6 @@
 from django.shortcuts import render
-from django.shortcuts import HttpResponse
 
 
 def index(request):
-    return HttpResponse('Welcome')
-
-# Create your views here.
+    """ Basic home view for html templates"""
+    return render(request, 'registration/login.html')
