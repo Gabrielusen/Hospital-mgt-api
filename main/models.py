@@ -3,16 +3,20 @@ from email.policy import default
 from pickle import FALSE
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-from django.contrib.auth.models import User
-import uuid
+#  from django.contrib.auth.models import User
+#  import uuid
 from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
 
 class User(AbstractUser):
-   is_staff = models.BooleanField('staff status', default=False)
-   is_patient = models.BooleanField('patient status',default=False) 
+    """
+    Abstract user class for staff and patient
+    """
+    is_admin = models.BooleanField('admin status', default=False)
+    is_staff = models.BooleanField('staff status', default=False)
+    is_patient = models.BooleanField('patient status',default=False)
 
 
 class Hospital(models.Model):
@@ -23,11 +27,11 @@ class Hospital(models.Model):
     hospital_name = models.CharField(max_length=255, blank=False, default='')
     hospital_address = models.CharField(max_length=100, blank=False, default='')
     hospital_phone = PhoneNumberField()
-    hospital_email = models.EmailField(max_length=254)
+    hospital_email = models.EmailField(max_length=254, default='')
 
 
     def __str__(self):
-        return self.hospital_name
+        return str(self.hospital_name)
 
 class Staff(models.Model):
     """
@@ -53,4 +57,4 @@ class Staff(models.Model):
         return self.staff_first_name + ' ' + self.staff_middle_name + ' ' + self.staff_last_name
 
 
-class Department(models.Model):
+#   class Department(models.Model):
