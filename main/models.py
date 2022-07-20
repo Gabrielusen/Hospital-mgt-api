@@ -30,6 +30,7 @@ class BaseUser(AbstractUser):
     """
     is_doctor = models.BooleanField('doctor_status', default=False)
     is_patient = models.BooleanField('patient_status', default=False)
+    is_admin = models.BooleanField('admin_status', default=False)
 
 
 class Hospital(models.Model):
