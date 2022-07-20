@@ -128,7 +128,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 LOGIN_REDIRECT_URL = '/login/'
 
-AUTH_USER_MODEL = 'main.CustomUser'
+AUTH_USER_MODEL = 'main.BaseUser'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
