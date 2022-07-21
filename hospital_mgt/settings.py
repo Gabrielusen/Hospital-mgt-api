@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     # Local apps
     'main.apps.MainConfig',
     'accounts.apps.AccountsConfig',
+
+    # Third party apps
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

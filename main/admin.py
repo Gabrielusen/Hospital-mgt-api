@@ -1,9 +1,10 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 # from .models import Hospital, Staff, BaseUser
 from .models import Hospital, Staff
 from .models import BaseUser
 from .forms import CustomUserCreationForm
-from django.contrib.auth.admin import UserAdmin
+
 
 
 class CustomUserAdmin(UserAdmin):
@@ -12,6 +13,19 @@ class CustomUserAdmin(UserAdmin):
     """
     model = BaseUser
     add_form = CustomUserCreationForm
+
+    fieldsets = (
+        *UserAdmin.fieldsets,
+        (
+            'User role',
+            {
+                'fields': (
+                    'is_doctor',
+                    'is_patient',
+                )
+            }
+        )
+    )
 
 # Register your models here.
 admin.site.register(Hospital)
