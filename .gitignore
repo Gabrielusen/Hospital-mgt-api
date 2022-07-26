@@ -138,4 +138,4 @@ GitHub.sublime-settings
 
 SHA
 SHA.pub
-.vscode
+.vscode/launch.json
