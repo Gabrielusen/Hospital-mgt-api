@@ -1,12 +1,6 @@
-# from django.shortcuts import render
-from django.views.generic import CreateView
-from django.urls import reverse_lazy
+from django.shortcuts import render
+from django.shortcuts import HttpResponse
 
-
-class SignUpView(CreateView):
-    """
-    signup class view
-    """
-    # form_class =
-    template_name = 'signup.html'
-    success_url = reverse_lazy('login.html')
+# Create your views here.
+def index(request):
+    return HttpResponse('Accounts')

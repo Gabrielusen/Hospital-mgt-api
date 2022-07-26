@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Local apps
-    'main.apps.MainConfig',
-    'accounts.apps.AccountsConfig',
+    #'main.apps.MainConfig',
+    'accounts',
 
     # Third party apps
     'rest_framework',
@@ -131,7 +131,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 LOGIN_REDIRECT_URL = '/login/'
 
-AUTH_USER_MODEL = 'main.BaseUser'
+# AUTH_USER_MODEL = 'main.BaseUser'
+AUTH_USER_MODEL = 'accounts.User'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
