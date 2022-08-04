@@ -1,44 +1,36 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from phonenumber_field.phonenumber import PhoneNumber
 
 
 USER_CHOICE = [
     ('D', 'Doctor'),
     ('P', 'Patient'),
-    ('R', 'Receptionist'),
-    ('HR', 'HR')
 ]
-# Create your models here.
+
+
+class Hospital(models.Model):
+    """ Class Hospital """
+    hospital_name = models.CharField(max_length=255, default='')
+    hospital_email = models.EmailField(max_length=255, default='')
+    hospital_address = models.CharField(max_length=255, default='')
+    hospital_phone_number = PhoneNumber()
+
+
+    def __str__(self) -> str:
+        return str(self.hospital_name)
+
+
 class User(AbstractUser):
-    """
-    user class for different users in the database
-    """
-    user_type = models.CharField(choices=USER_CHOICE, max_length=3, default=None)
+    """ Abstract class for users """
+    user = models.ForeignKey(Hospital, on_delete=models.PROTECT, null=True, blank=True)
+    roles = models.CharField(max_length=20, choices=USER_CHOICE, null=False, blank=False)
 
-    def is_doctor(self):
-        """ return True if the user is a doctor and False if not """
-        if self.user_type == 'D':
-            return True
-        return False
 
-    def is_patient(self):
-        """ return True if the user is a patient and False if not """
-        if self.user_type == 'P':
-            return True
-        return False
-
-    def is_receptionist(self):
-        """ return True if the user is a receptionist and False if not """
-        if self.user_type == 'R':
-            return True
-        return False
-
-    def is_hr(self):
-        """ return True if the user is HR and False if not """
-        if self.user_type == 'HR':
-            return True
-        return False
-
-    class Meta:
-        """ Descending order for id """
-        # ordering = ('id',)
+class Employees(models.Model):
+    """ Class Table for Employees details"""
+    hospital_name = models.ForeignKey(Hospital, on_delete=models.PROTECT, null=False, blank=True)
+    first_name = models.CharField(max_length=50, default='', null=False, blank=True)
+    last_name = models.CharField(max_length=50, default='', null=False, blank=True)
+    middle_name = models.CharField(max_length=50, default='', null=False, blank=True)
+    birth_date = models.DateField()

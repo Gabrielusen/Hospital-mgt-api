@@ -1,3 +1,9 @@
 from django.db import models
+from accounts.models import User
+from rest_framework import serializers
 
-# Create your models here.
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = '__all__'

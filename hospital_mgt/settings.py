@@ -33,18 +33,20 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
+    'django.contrib.auth', # core authentication framework and its models
+    'django.contrib.contenttypes', # Django content type system (allows permissions to be associated with models)
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
     # Local apps
     #'main.apps.MainConfig',
-    'accounts',
+    'accounts.apps.AccountsConfig',
+    # 'apis.apps.ApisConfig'
 
     # Third party apps
     'rest_framework',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
@@ -129,9 +131,10 @@ STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-LOGIN_REDIRECT_URL = '/login/'
+# LOGIN_REDIRECT_URL = '/login/'
 
 # AUTH_USER_MODEL = 'main.BaseUser'
+# AUTH_USER_MODEL = 'accounts.User'
 AUTH_USER_MODEL = 'accounts.User'
 
 # Default primary key field type
